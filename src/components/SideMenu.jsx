@@ -1,15 +1,15 @@
 import React from "react";
+import MenuItem from "./MenuItem";
 import "./styles.css";
 
 function SideMenu({isMenuOpen}) {
     return (
-      <div className={`SideMenu ${isMenuOpen ? "open" : ""}`}>
-      <h3>Menu Items</h3>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-      </ul>
+      <div className={`SideMenu ${isMenuOpen ? "open" : ""} ScrollBar`}>
+        <MenuItem name="Maps"/>
+        <MenuItem name="Subjects"/>
+        <MenuItem name="Topics"/>
+        <MenuItem name="Notes"/>
+
     </div>
     );
     

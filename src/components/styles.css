@@ -4,11 +4,14 @@
     --menu-background-color: #4D4C4C;
     --text-color: #d3d2d2;
     --screen-bg-color: #313131;
+    --text-size: 1ch;
+    --text-size-calc: calc(50% - var(--text-size));
   }
 
-
-
+/*#region BackGround*/
 .BackGround {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
@@ -16,26 +19,39 @@
     height: 100vh;
     background-color: var(--screen-bg-color);
 }
-
+/*#endregion BackGround*/
+.AllContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 98%;
+    margin: auto;
+    margin-top: 10px;
+    row-gap: 10px;
+}
+/*#region Canvas*/
+.CanvasContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    column-gap: 10px;
+}
 .Canvas {
     position: relative;
-    width: 99vw; /* Default width */
-    margin: 5px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    height: 90vh;
-    background-color: var(--menu-background-color);
     border-radius: 10px;
-    transition: transform 0.3s ease, width 0.3s ease; /* Smooth transition */
+    width: 100%;
+    height: 98%;
+    background-color: var(--menu-background-color);
 }
 
 .Canvas.shifted {
-    transform: translateX(255px); /* Shift canvas to the right */
-    width: calc(99vw - 255px); /* Adjust width to align right edge with navbar */
+
 }
+/*#endregion Canvas*/
+
+/*#region NavBar*/
 
 .NavBar {
-    margin: 5px;
     display: flex;
     background-color: var(--menu-background-color);
     align-items: center;
@@ -51,8 +67,7 @@
     transform: translateX(-50%);
     white-space: nowrap;
 }
-
-
+/*#endregion NavBar*/
 
 /*#region NavBar Buttons*/
 .Button {
@@ -78,31 +93,11 @@
 }
 /*#endregion NavbarButtons*/
 
-
-
-/*#region SideMenu*/
-.SideMenu {
-    position: absolute;
-    border-radius: 10px;
-    top: 8vh;
-    left: -100%; /* Initially off-screen */
-    width: 250px;
-    height: 90vh;
-    background-color: #4D4C4C;
-    transition: left 0.3s ease;
-    margin-top: 10px;
-}
-
-.SideMenu.open {
-    left: 5px; /* Slide in when the menu is opened */
-}
-/*#endregion SideMenu*/
-
-
+/*#region NewButton*/
 .NewButton {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     border-radius: 50%;
     background-color: var(--hover-color);
     border: none;
@@ -111,3 +106,111 @@
 .NewButton:hover {
     background-color: var(--new-button-hover-color);
 }
+/*#endregion NewButton*/
+
+
+/*#region SideMenu*/
+.SideMenu {
+    order: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    height: 98%;
+    width: 0%;
+    max-width: 0;
+    background-color: var(--menu-background-color);
+    transition: max-width 0.1s ease-out;
+    overflow-wrap: normal;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+
+.SideMenu.open {
+    order: -1;
+    width: 15%;
+    max-width: 15%;
+}
+/*#endregion SideMenu*/
+
+
+
+.MenuItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    max-height: 200px;
+    height: auto; /* Allow it to expand with content */
+}
+
+.SideMenuButtonDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SideMenuButton {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 50px;
+    border: none;
+    background-color: var(--menu-background-color);
+    cursor: pointer;
+}
+
+.MenuItemContent {
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.SideMenuButton:hover {
+    background-color: var(--hover-color);
+}
+
+.MenuItemIcon {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.SubMenu {
+    max-height: 0; /* Initially hidden */
+    overflow: hidden;
+    background-color: var(--menu-background-color);
+    transition: max-height 0.3s ease-out;
+}
+
+.SubMenu.Expanded {
+    max-height: 200px; /* Adjust based on content */
+}
+
+
+.ScrollBar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.ScrollBar::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+    border-radius: 10px;
+}
+
+.ScrollBar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--menu-background-color);
+}
+
+.ScrollBar::-webkit-scrollbar-track {
+    background-color: var(--hover-color);
+    border-radius: 10px;
+}
+
+.ScrollBar::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+

@@ -1,18 +1,25 @@
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from "../components/Navbar";
+import Canvas from "../components/Canvas";
+import SideMenu from "../components/SideMenu";
+import "../components/styles.css";
 
 function Home() {
-  const navigate = useNavigate(); // React Router hook
 
-  const goToAbout = () => {
-    navigate('/about'); // Navigate to the about page
-  };
+  const [isMenuOpen, setMenu] = useState(false);
+
+  function toggleMenu() {
+      setMenu(!isMenuOpen);
+  }
 
   return (
-    <div>
-      <h1>Home Page</h1>
-      <button onClick={goToAbout}>Go to About Page</button>
-      <button onClick={() => navigate('/user/1')}>Go to User 1</button>
-      <button onClick={() => navigate('/user/2')}>Go to User 2</button>
+    <div className='BackGround'>
+
+      <NavBar toggleMenu={toggleMenu} />
+      <SideMenu isMenuOpen={isMenuOpen} />
+      <Canvas isMenuOpen={isMenuOpen} />
+
     </div>
   );
 }

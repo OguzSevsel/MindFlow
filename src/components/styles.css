@@ -1,0 +1,113 @@
+:root {
+    --hover-color:  #6c6868;
+    --new-button-hover-color: #868383;
+    --menu-background-color: #4D4C4C;
+    --text-color: #d3d2d2;
+    --screen-bg-color: #313131;
+  }
+
+
+
+.BackGround {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--screen-bg-color);
+}
+
+.Canvas {
+    position: relative;
+    width: 99vw; /* Default width */
+    margin: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    height: 90vh;
+    background-color: var(--menu-background-color);
+    border-radius: 10px;
+    transition: transform 0.3s ease, width 0.3s ease; /* Smooth transition */
+}
+
+.Canvas.shifted {
+    transform: translateX(255px); /* Shift canvas to the right */
+    width: calc(99vw - 255px); /* Adjust width to align right edge with navbar */
+}
+
+.NavBar {
+    margin: 5px;
+    display: flex;
+    background-color: var(--menu-background-color);
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    height: 8vh;
+}
+
+.Title {
+    position: absolute;
+    color: var(--text-color);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+
+
+/*#region NavBar Buttons*/
+.Button {
+    background-color: var(--menu-background-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    height: 95%;
+    border: none;
+}
+
+.MenuButton {
+    position: absolute;
+    left: 0px;
+}
+
+.AccountButton {
+    position: absolute;
+    right: 0px;
+}
+
+.Button:hover {
+    background-color: var(--hover-color);
+}
+/*#endregion NavbarButtons*/
+
+
+
+/*#region SideMenu*/
+.SideMenu {
+    position: absolute;
+    border-radius: 10px;
+    top: 8vh;
+    left: -100%; /* Initially off-screen */
+    width: 250px;
+    height: 90vh;
+    background-color: #4D4C4C;
+    transition: left 0.3s ease;
+    margin-top: 10px;
+}
+
+.SideMenu.open {
+    left: 5px; /* Slide in when the menu is opened */
+}
+/*#endregion SideMenu*/
+
+
+.NewButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    background-color: var(--hover-color);
+    border: none;
+}
+
+.NewButton:hover {
+    background-color: var(--new-button-hover-color);
+}

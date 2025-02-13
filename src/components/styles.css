@@ -44,9 +44,8 @@
     background-color: var(--menu-background-color);
 }
 
-/* .Canvas.shifted {
-
-} */
+.Canvas.shifted {
+}
 /*#endregion Canvas*/
 
 /*#region NavBar*/
@@ -112,9 +111,8 @@
 /*#region SideMenu*/
 .SideMenu {
     order: -1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: none;
+    
     border-radius: 10px;
     height: 98%;
     width: 0%;
@@ -128,6 +126,9 @@
 
 
 .SideMenu.open {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     order: -1;
     width: 15%;
     max-width: 15%;

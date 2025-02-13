@@ -7,6 +7,54 @@
     --text-size: 1ch;
     --text-size-calc: calc(50% - var(--text-size));
   }
+.Menus {
+    background-color: var(--menu-background-color);
+    border-radius: 10px;
+}
+.AllContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 98%;
+    margin: auto;
+    margin-top: 10px;
+    row-gap: 10px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*#region BackGround*/
 .BackGround {
@@ -20,31 +68,31 @@
     background-color: var(--screen-bg-color);
 }
 /*#endregion BackGround*/
-.AllContainer {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 98%;
-    margin: auto;
-    margin-top: 10px;
-    row-gap: 10px;
-}
+
 /*#region Canvas*/
 .CanvasContainer {
     display: flex;
-    height: 100%;
-    width: 100%;
+    height: 89vh;
+    width: 98vw;
     column-gap: 10px;
 }
-.Canvas {
-    position: relative;
-    border-radius: 10px;
+
+.ZoomContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 87vh;
     width: 100%;
-    height: 98%;
-    background-color: var(--menu-background-color);
+    margin: auto;
 }
 
-.Canvas.shifted {
+.Canvas {
+    
+    height: 85vh;
+    width: 97vw;
+}
+.shifted {
+    width: 83.3vw;
 }
 /*#endregion Canvas*/
 
@@ -54,9 +102,10 @@
     display: flex;
     background-color: var(--menu-background-color);
     align-items: center;
-    position: relative;
     border-radius: 10px;
+    flex-shrink: 0;
     height: 8vh;
+    width: 98vw;
 }
 
 .Title {
@@ -70,20 +119,15 @@
 
 /*#region NavBar Buttons*/
 .Button {
-    background-color: var(--menu-background-color);
-    color: var(--text-color);
-    border-radius: 10px;
     height: 95%;
     border: none;
 }
 
 .MenuButton {
-    position: absolute;
     left: 0px;
 }
 
 .AccountButton {
-    position: absolute;
     right: 0px;
 }
 
@@ -94,9 +138,12 @@
 
 /*#region NewButton*/
 .NewButton {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    position: fixed;
+    z-index: 1;
+    bottom: 4%;
+    right: 2.3%;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background-color: var(--hover-color);
     border: none;
@@ -107,53 +154,49 @@
 }
 /*#endregion NewButton*/
 
-
 /*#region SideMenu*/
 .SideMenu {
     order: -1;
     display: none;
-    
-    border-radius: 10px;
-    height: 98%;
-    width: 0%;
-    max-width: 0;
-    background-color: var(--menu-background-color);
-    transition: max-width 0.1s ease-out;
-    overflow-wrap: normal;
-    overflow: auto;
+    height: 87vh;
+    width: 0px;
+    max-width: 0px;
+    margin: auto;
+    overflow-y: auto;
     overflow-x: hidden;
+    
 }
 
-
-.SideMenu.open {
+.open {
     display: flex;
     flex-direction: column;
     align-items: center;
-    order: -1;
-    width: 15%;
-    max-width: 15%;
+    row-gap: 10px;
+    width: 15vw;
+    max-width: 15vw;
 }
 /*#endregion SideMenu*/
 
-
+/*#region SideMenuItems*/
 
 .MenuItem {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     width: 95%;
-    max-height: 200px;
+    max-width: 95%;
+    max-height: 250px;
+    margin-top: 10px;
     height: auto; /* Allow it to expand with content */
 }
-
 .SideMenuButtonDiv {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .SideMenuButton {
     display: flex;
     align-items: center;
@@ -163,16 +206,13 @@
     background-color: var(--menu-background-color);
     cursor: pointer;
 }
-
 .MenuItemContent {
-    padding: 20px;
+    padding: 5%;
     color: var(--text-color);
 }
-
 .SideMenuButton:hover {
     background-color: var(--hover-color);
 }
-
 .MenuItemIcon {
     color: var(--text-color);
     display: flex;
@@ -180,38 +220,38 @@
     justify-content: center;
     margin-left: 10px;
 }
-
 .SubMenu {
     max-height: 0; /* Initially hidden */
     overflow: hidden;
     background-color: var(--menu-background-color);
     transition: max-height 0.3s ease-out;
 }
-
 .SubMenu.Expanded {
     max-height: 200px; /* Adjust based on content */
 }
 
 
-.ScrollBar::-webkit-scrollbar {
-    width: 12px;
-}
+/*#endregion SideMenuItems*/
 
+/*#region ScrollBar*/
+
+.ScrollBar::-webkit-scrollbar {
+    width: 10px;
+    scrollbar-gutter: stable;
+}
 .ScrollBar::-webkit-scrollbar-thumb {
     background-color: var(--text-color);
     border-radius: 10px;
 }
-
 .ScrollBar::-webkit-scrollbar-thumb:hover {
     background-color: var(--menu-background-color);
 }
-
 .ScrollBar::-webkit-scrollbar-track {
     background-color: var(--hover-color);
     border-radius: 10px;
 }
-
 .ScrollBar::-webkit-scrollbar-corner {
     background-color: transparent;
 }
 
+/*#endregion ScrollBar*/

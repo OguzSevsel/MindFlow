@@ -4,7 +4,7 @@ import "./styles.css";
 
 function SideMenu({isMenuOpen}) {
     return (
-      <div className={`SideMenu ${isMenuOpen ? "open" : ""} ScrollBar`}>
+      <div className={`SideMenu Menus ${isMenuOpen ? "open" : ""} ScrollBar`}>
         <MenuItem name="Maps"/>
         <MenuItem name="Subjects"/>
         <MenuItem name="Topics"/>

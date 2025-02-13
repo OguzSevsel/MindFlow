@@ -11,9 +11,9 @@ function MenuItem(props) {
     };
 
     return (
-        <div className="MenuItem">
-            <div className="SideMenuButtonDiv">
-                <button onClick={handleClick} className="SideMenuButton">
+        <div className="MenuItem Menus">
+            <div className="SideMenuButtonDiv Menus">
+                <button onClick={handleClick} className="SideMenuButton Menus">
                     <div className="MenuItemIcon">
                         {isExpanded  ? <ExpandMoreIcon/> : <ChevronRightIcon/>}
                     </div>

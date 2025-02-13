@@ -3,7 +3,7 @@ import React from "react";
 
 function MenuButton({ onClick }) {
     return (
-        <button onClick={onClick} className="Button MenuButton">
+        <button onClick={onClick} className="Button MenuButton Menus">
             <MenuIcon style={{ fontSize: "36px", color: "#d3d2d2" }} />
         </button>
     );

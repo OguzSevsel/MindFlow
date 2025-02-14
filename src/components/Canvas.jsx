@@ -7,6 +7,7 @@ import {
     TransformComponent,
     useControls,
   } from "react-zoom-pan-pinch";
+import { isMuiElement } from "@mui/material";
 
 function Canvas({ isMenuOpen }) {
     const [divs, setDivs] = useState([]);
@@ -15,7 +16,7 @@ function Canvas({ isMenuOpen }) {
     const addNewDiv = () => {
         setDivs((prevDivs) => [
             ...prevDivs,
-            { id: Date.now(), content: "Hello", left: 400, top: 200 } // Initial position
+            { id: Date.now(), content: "Hello", left: 1400, top: 200 } // Initial position
         ]);
     };
 
@@ -26,7 +27,7 @@ function Canvas({ isMenuOpen }) {
     };
 
     return (
-        <div className={"ZoomContainer Menus"}>
+        <div className={`ZoomContainer ${isMenuOpen ? "opened" : "closed"} Menus`}>
              <TransformWrapper
             limitToBounds={true}
             alignmentAnimation={{ sizeX: 5, sizeY: 5 }}
@@ -38,13 +39,14 @@ function Canvas({ isMenuOpen }) {
             <Controls />
             
                 <TransformComponent>
-                        <div className={`Canvas ${isMenuOpen ? "shifted" : ""} Menus`}>
+                        <div className={`Canvas ${isMenuOpen ? "CanvasShrinks" : "CanvasGrows"} Menus`}>
                             {divs.map((div) => (
                                 <Node
                                     key= {div.id}
                                     content = {div.content}
                                     left= {div.left}
                                     top = {div.top}
+                                    isMenuOpen = {isMenuOpen}
                                 />
                             ))}
                         </div>

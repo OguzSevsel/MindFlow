@@ -7,10 +7,12 @@
     --text-size: 1ch;
     --text-size-calc: calc(50% - var(--text-size));
   }
+
 .Menus {
     background-color: var(--menu-background-color);
     border-radius: 10px;
 }
+
 .AllContainer {
     display: flex;
     flex-direction: column;
@@ -22,37 +24,6 @@
     flex-grow: 0;
     flex-shrink: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -69,12 +40,22 @@
 }
 /*#endregion BackGround*/
 
+
+
 /*#region Canvas*/
 .CanvasContainer {
     display: flex;
     height: 89vh;
     width: 98vw;
+    transition: column-gap 0.5s ease;
+}
+
+.SideMenuOpened {
     column-gap: 10px;
+}
+
+.SideMenuClosed {
+    column-gap: 0px;
 }
 
 .ZoomContainer {
@@ -83,23 +64,38 @@
     align-items: center;
     height: 87vh;
     width: 100%;
-    margin: auto;
 }
 
 .Canvas {
-    
     height: 85vh;
+    transition: width 0.5s ease;
+}
+
+.CanvasShrinks {
+    width: 82vw;
+}
+
+.CanvasGrows {
     width: 97vw;
 }
-.shifted {
-    width: 83.3vw;
+
+.Nodes {
+    transition: translate 0.5s ease;
 }
+
+.NodeOpen {
+    translate: -15vw;
+}
+
 /*#endregion Canvas*/
+
+
 
 /*#region NavBar*/
 
 .NavBar {
     display: flex;
+    justify-content: space-between;
     background-color: var(--menu-background-color);
     align-items: center;
     border-radius: 10px;
@@ -109,13 +105,14 @@
 }
 
 .Title {
-    position: absolute;
     color: var(--text-color);
-    left: 50%;
-    transform: translateX(-50%);
+    text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
 }
 /*#endregion NavBar*/
+
+
 
 /*#region NavBar Buttons*/
 .Button {
@@ -126,15 +123,17 @@
 .MenuButton {
     left: 0px;
 }
-
+/* 
 .AccountButton {
-    right: 0px;
-}
+
+} */
 
 .Button:hover {
     background-color: var(--hover-color);
 }
 /*#endregion NavbarButtons*/
+
+
 
 /*#region NewButton*/
 .NewButton {
@@ -154,28 +153,30 @@
 }
 /*#endregion NewButton*/
 
+
+
 /*#region SideMenu*/
 .SideMenu {
     order: -1;
-    display: none;
-    height: 87vh;
-    width: 0px;
-    max-width: 0px;
-    margin: auto;
     overflow-y: auto;
     overflow-x: hidden;
-    
+    height: 87vh;
+    row-gap: 10px;
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .open {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
     width: 15vw;
-    max-width: 15vw;
+    opacity: 1;
+}
+
+.close {
+    width: 0;
+    opacity: 0;
 }
 /*#endregion SideMenu*/
+
+
 
 /*#region SideMenuItems*/
 
@@ -232,6 +233,8 @@
 
 
 /*#endregion SideMenuItems*/
+
+
 
 /*#region ScrollBar*/
 

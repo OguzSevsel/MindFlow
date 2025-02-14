@@ -14,7 +14,7 @@ function CanvasContainer() {
     return (
         <div className="AllContainer">
             <NavBar toggleMenu={toggleMenu} />
-            <div className="CanvasContainer">
+            <div className={`CanvasContainer ${isMenuOpen ? "SideMenuOpened" : "SideMenuClosed"}`}>
                 <Canvas isMenuOpen={isMenuOpen} />
                 <SideMenu isMenuOpen={isMenuOpen} />
             </div>

@@ -13,6 +13,7 @@ function Node (props) {
             left: props.left,
             top: props.top
         }}
+        className= {`Nodes ${props.isMenuOpen ? "NodeOpen" : ""}`}
         >
             {props.content}
         </div>

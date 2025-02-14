@@ -18,6 +18,7 @@ function NewNodeButton({ onAddDiv, isNear, ...props }) {
             width: props.width, 
             height: props.height 
         }}
+        onClick={onAddDiv}
 
         >
             <AddIcon style={{fontSize: "36px" , color: "#d3d2d2"}}/>

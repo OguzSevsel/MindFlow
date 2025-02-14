@@ -8,10 +8,7 @@ function Node ({onAddDiv, ...props}) {
     const [isNear, setIsNear] = useState(false);
     const divRef = useRef(null);
     const PROXIMITY_THRESHOLD = 300;
-    const [isVisible, setIsVisible] = useState(false);
-    const [isHiding, setIsHiding] = useState(false);
     console.log(props.zoomlevel);
-    
 
     useEffect(() => {
         const handleMouseMove = (event) => {
@@ -35,17 +32,6 @@ function Node ({onAddDiv, ...props}) {
     }, [mousePos]);
 
 
-    useEffect(() => {
-        if (isNear) {
-          setIsVisible(true);
-          setIsHiding(false);
-        } else if (isVisible) {
-          setIsHiding(true);
-          setTimeout(() => setIsVisible(false), 1000); // Wait for fade-out animation
-        }
-      }, [isNear, isVisible]);
-
-
     return (
         
         <div ref={divRef} style={{placeItems: "center", display: "grid", width: "400px", height: "400px", gridTemplateColumns: "0.5fr 2fr 0.5fr", gridTemplateRows: "0.5fr 2fr 0.5fr"}}>
@@ -67,35 +53,9 @@ function Node ({onAddDiv, ...props}) {
                 {props.content}
             </div>
 
-            <NewNodeButton isNear={isNear} width={"50px"}/>
-
-            {isNear && props.zoomlevel === 1 && (
-                <>
-                    <button
-                    style={{width: "50px", height: "50px", gridColumn: "2", gridRow: "1"}}>
-                    Top
-                    </button>
-
-                    <button 
-                    style={{width: "50px", height: "50px",  gridColumn: "2", gridRow: "3"}}>
-                    Bottom
-                        </button>
-
-                    <button
-                    style={{width: "50px", height: "50px", gridColumn: "1", gridRow: "2"}}>
-                    Left
-                    </button>
-
-
-                    <button
-                    style={{width: "50px", height: "50px",  gridColumn: "3", gridRow: "2"}}>
-                    Right
-                    </button>
-                </>
-            )}
+            <NewNodeButton onAddDiv={onAddDiv} isNear={isNear} width={"50px"}/>
+            
         </div>
-        
-             
     );
 }
 

@@ -15,9 +15,11 @@ function Canvas({ isMenuOpen }) {
 
     // Function to add a new div to the state
     const addNewDiv = () => {
+        console.log("created");
+        
         setDivs((prevDivs) => [
             ...prevDivs,
-            { id: Date.now(), content: "Hello", left: 200, top: 200 } // Initial position
+            { id: Date.now(), content: "Hello", left: 300, top: 200 } // Initial position
         ]);
     };
 
@@ -48,6 +50,7 @@ function Canvas({ isMenuOpen }) {
                         <div className={`Canvas ${isMenuOpen ? "CanvasShrinks" : "CanvasGrows"}`}>
                             {divs.map((div) => (
                                 <Node
+                                    onAddDiv={addNewDiv}
                                     key= {div.id}
                                     content = {div.content}
                                     left= {div.left}

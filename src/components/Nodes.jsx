@@ -1,3 +1,4 @@
+import { Translate } from "@mui/icons-material";
 import React from "react";
 
 
@@ -11,7 +12,7 @@ function Node (props) {
             width: "100px",
             height: "100px",
             left: props.left,
-            top: props.top
+            top: props.top,
         }}
         className= {`Nodes ${props.isMenuOpen ? "NodeOpen" : ""}`}
         >

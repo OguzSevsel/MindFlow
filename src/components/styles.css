@@ -82,11 +82,10 @@
 
 .Nodes {
     transition: translate 0.5s ease-in-out;
-    
 }
 
 .NodeOpen {
-    translate: -13.3vw;
+    translate: calc(-13.3vw / var(--zoom-level, 1));
 }
 /*#endregion Canvas*/
 

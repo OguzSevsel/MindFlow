@@ -63,16 +63,17 @@
     justify-content: center;
     align-items: center;
     height: 87vh;
+    overflow: hidden;
     width: 100%;
 }
 
 .Canvas {
     height: 85vh;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease-in-out;
 }
 
 .CanvasShrinks {
-    width: 82vw;
+    width: 83.5vw;
 }
 
 .CanvasGrows {
@@ -80,13 +81,13 @@
 }
 
 .Nodes {
-    transition: translate 0.5s ease;
+    transition: translate 0.5s ease-in-out;
+    
 }
 
 .NodeOpen {
-    translate: -15vw;
+    translate: -13.3vw;
 }
-
 /*#endregion Canvas*/
 
 

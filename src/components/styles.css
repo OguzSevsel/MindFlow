@@ -5,6 +5,8 @@
     --text-color: #d3d2d2;
     --screen-bg-color: #313131;
     --text-size: 1ch;
+    --move: calc(-13.3vw / var(--zoom-level));
+    --movez: -(var(--move));
     --text-size-calc: calc(50% - var(--text-size));
   }
 
@@ -59,33 +61,19 @@
 }
 
 .ZoomContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 87vh;
     overflow: hidden;
     width: 100%;
 }
 
 .Canvas {
+    transition: translate 0.5s ease-in-out;
     height: 85vh;
-    transition: width 0.5s ease-in-out;
+    width: 100vw;
 }
 
 .CanvasShrinks {
-    width: 83.5vw;
-}
-
-.CanvasGrows {
-    width: 97vw;
-}
-
-.Nodes {
-    transition: translate 0.5s ease-in-out;
-}
-
-.NodeOpen {
-    translate: calc(-13.3vw / var(--zoom-level, 1));
+    translate: calc(-13.3vw / var(--zoom-level));
 }
 /*#endregion Canvas*/
 

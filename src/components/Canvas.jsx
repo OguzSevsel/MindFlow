@@ -17,7 +17,7 @@ function Canvas({ isMenuOpen }) {
     const addNewDiv = () => {
         setDivs((prevDivs) => [
             ...prevDivs,
-            { id: Date.now(), content: "Hello", left: 1600, top: 200 } // Initial position
+            { id: Date.now(), content: "Hello", left: 200, top: 200 } // Initial position
         ]);
     };
 
@@ -29,32 +29,34 @@ function Canvas({ isMenuOpen }) {
         <div className={`ZoomContainer ${isMenuOpen ? "opened" : "closed"} Menus`}>
              <TransformWrapper
             limitToBounds={false}
-            centerOnInit={true}
             minScale={1}
             maxScale={2}
-            smooth={true}
-            alignmentAnimation={{ sizeX: 5, sizeY: 5 }}
+            // smooth={true}
+            centerOnInit={true}
+            // alignmentAnimation={{ sizeX: 5, sizeY: 5 }}
             onZoom={(ref) => {setZoomLevel(ref.state.scale); console.log('Zoom Level:', ref.state.scale); 
                 document.documentElement.style.setProperty('--zoom-level', ref.state.scale);
+
+                let menuOffset = isMenuOpen ? -125 : 0; // Adjust based on menu width
+                ref.instance.wrapperComponent.style.transformOrigin = `${50 + menuOffset}%`;
             }} // Update zoom level on zoom change
             >
             {({ zoomIn, zoomOut, resetTransform }) => (
             <>
             <Controls />
-                    <TransformComponent>
-                            <div className={`Canvas ${isMenuOpen ? "CanvasShrinks" : "CanvasGrows"} Menus`}>
-                                {divs.map((div) => (
-                                    <Node
-                                        key= {div.id}
-                                        content = {div.content}
-                                        left= {div.left}
-                                        top = {div.top}
-                                        isMenuOpen = {isMenuOpen}
-                                    />
-                                ))}
-                            </div>
-                    </TransformComponent>
-            
+                <TransformComponent>
+                        <div className={`Canvas ${isMenuOpen ? "CanvasShrinks" : "CanvasGrows"}`}>
+                            {divs.map((div) => (
+                                <Node
+                                    key= {div.id}
+                                    content = {div.content}
+                                    left= {div.left}
+                                    top = {div.top}
+                                    isMenuOpen = {isMenuOpen}
+                                />
+                            ))}
+                        </div>
+                </TransformComponent>
             <NewButton onAddDiv={addNewDiv} /> 
             </>
             )}

@@ -31,12 +31,12 @@ function Canvas({ isMenuOpen }) {
             limitToBounds={false}
             minScale={1}
             maxScale={2}
-            // smooth={true}
+            smooth={true}
             centerOnInit={true}
-            // alignmentAnimation={{ sizeX: 5, sizeY: 5 }}
+            alignmentAnimation={{ sizeX: 5, sizeY: 5 }}
             onZoom={(ref) => {setZoomLevel(ref.state.scale); console.log('Zoom Level:', ref.state.scale); 
                 document.documentElement.style.setProperty('--zoom-level', ref.state.scale);
-
+                
                 let menuOffset = isMenuOpen ? -125 : 0; // Adjust based on menu width
                 ref.instance.wrapperComponent.style.transformOrigin = `${50 + menuOffset}%`;
             }} // Update zoom level on zoom change
@@ -53,6 +53,7 @@ function Canvas({ isMenuOpen }) {
                                     left= {div.left}
                                     top = {div.top}
                                     isMenuOpen = {isMenuOpen}
+                                    zoomlevel = {zoomLevel}
                                 />
                             ))}
                         </div>

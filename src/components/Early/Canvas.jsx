@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import NewButton from '../components/NewButton';
+import NewButton from './NewButton';
 import Node from "./Nodes";
 
 import {
@@ -7,7 +7,6 @@ import {
     TransformComponent,
     useControls,
   } from "react-zoom-pan-pinch";
-import { isMuiElement } from "@mui/material";
 
 function Canvas({ isMenuOpen }) {
     const [divs, setDivs] = useState([]);
@@ -19,7 +18,10 @@ function Canvas({ isMenuOpen }) {
         
         setDivs((prevDivs) => [
             ...prevDivs,
-            { id: Date.now(), content: "Hello", left: 300, top: 200 } // Initial position
+            { id: Date.now(), content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry." + 
+                "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, " + 
+                "when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+                 left: 300, top: 200 } // Initial position
         ]);
     };
 

@@ -1,6 +1,5 @@
 import React from "react";
 import MenuItem from "./MenuItem";
-import "./styles.css";
 
 function SideMenu({isMenuOpen}) {
     return (

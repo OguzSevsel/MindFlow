@@ -1,5 +1,4 @@
 import AddIcon from '@mui/icons-material/Add';
-import "./styles.css";
 
 function NewButton({ onAddDiv }) {
  

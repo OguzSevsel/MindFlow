@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import MenuButton from "./MenuButton";
 import AccountButton from "./AccountButton";
-import "./styles.css";
 
 function NavBar({toggleMenu}) {
 

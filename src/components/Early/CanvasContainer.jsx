@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import NavBar from "../components/Navbar";
-import Canvas from "../components/Canvas";
-import SideMenu from "../components/SideMenu";
+import NavBar from "./Navbar";
+import Canvas from "./Canvas";
+import SideMenu from "./SideMenu";
 
 function CanvasContainer() {
 

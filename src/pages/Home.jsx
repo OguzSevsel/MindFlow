@@ -1,19 +1,20 @@
-import React, {useState} from 'react';
-import CanvasContainer from '../components/Early/CanvasContainer';
-import "../components/Early/styles.css";
-import AddIcon from '@mui/icons-material/Add';
-import Button from '../components/Index/SimpleComponents/Button';
+import React, { useRef } from 'react';
+import "../components/Index/styles.css";
+import Note from '../components/Index/Canvas/Notes/Note';
 
 function Home() {
 
-  
+  const containerRef = useRef(null);
 
   return (
-    <div className='BackGround'>
+    <div ref={containerRef} className='BackGround'>
 
+      <Note containerRef={containerRef}/>
+      <Note containerRef={containerRef}/>
+      <Note containerRef={containerRef}/>
+      <Note containerRef={containerRef}/>
+      <Note containerRef={containerRef}/>
 
-      <Button className={`Menus Button`} Icon={AddIcon} isIconed={true} label={"Hello"}/>
-      
 
     </div>
   );

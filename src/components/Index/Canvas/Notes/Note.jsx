@@ -1,49 +1,15 @@
-import React, { forwardRef  } from "react";
+import React from "react";
 
-import { Add } from '@mui/icons-material';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-
-import Button from '../../SimpleComponents/Button';
-import DragButton from "../../SimpleComponents/DragButton";
-
-import useDrag from "../../../Hooks/useDrag";
-
-const Note = forwardRef((props, ref) => {
-    
-    const { containerRef } = props;
-
-    const {position, scale, snapped, fieldRef, handleMouseDown, handleMouseMove, handleMouseUp} = useDrag(containerRef);
-    
-    
+const Note = ({ id, width, height }) => {
   return (
-
-    <div 
-    style= {{ position: 'absolute', left: `${position.x}px`, top: `${position.y}px`, width: `${scale.width}px`, height: `${scale.height}px`}}
-    ref={fieldRef}
-    className={`Note Menus`}>
-
-        <Button 
-        className={`CircularButtons`} 
-        Icon={Add} 
-        isIconed={true} 
-        color={"white"} 
-        fontSize={40}/>
-
-        <DragButton 
-        onMouseMove={handleMouseMove} 
-        onMouseUp={handleMouseUp} 
-        onMouseDown={handleMouseDown} 
-        className={`Buttons`} 
-        Icon={DragIndicatorIcon} 
-        isIconed={true} 
-        color={"white"} 
-        fontSize={30}/>
-
+    <div className="Note Menus drag-handle" style={{ 
+      backgroundColor: "#4D4C4C", 
+      width: `${width}px`, // Use the width passed from the parent
+      height: `${height}px` // Use the height passed from the parent
+    }}>
+        Item {id}
     </div>
   );
-});
+};
 
-export default Note
-
-
-
+export default Note;

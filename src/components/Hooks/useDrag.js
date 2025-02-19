@@ -1,13 +1,15 @@
 // useDrag.js
 import { useState, useRef, useEffect, forwardRef } from 'react';
 
-const useDrag = (containerRef) => {
+const useDrag = (containerRef, onMouseUp, fields) => {
     const [draggingItem, setDraggingItem] = useState(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [offSet, setOffSet] = useState({ x: 0, y: 0 });
     const [isDragging, setDrag] = useState(false);
     const [scale, setScale] = useState({width: 250, height: 250});
     const [snapped, setSnap] = useState(false);
+    const [gridSize, setGridSize] = useState({ width: 0, height: 0 });
+    
     const fieldRef = useRef(null);
     var draggedRect = null;
     var containerRect = null;
@@ -52,7 +54,26 @@ const useDrag = (containerRef) => {
         setDrag(false);
         setDraggingItem(null);
         setSnap(false);
+
+        const relativeX = position.x - containerRect.left;
+        const relativeY = position.y - containerRect.top;
+      
+        const snappedX = Math.round(relativeX / gridSize.width) * gridSize.width;
+        const snappedY = Math.round(relativeY / gridSize.height) * gridSize.height;
+      
+        setPosition({
+          x: containerRect.left + snappedX, 
+          y: containerRect.top + snappedY, 
+        });
+        
     };
+
+    useEffect(() => {
+        if (containerRef.current) {
+          const rect = containerRef.current.getBoundingClientRect();
+          setGridSize({ width: rect.width / 5, height: rect.height / 5 });
+        }
+      }, [containerRef.current]);
 
     const handleMouseMove = (event) => {
         if (draggingItem && isDragging) {
@@ -74,27 +95,25 @@ const useDrag = (containerRef) => {
             const SnapTop = containerRect.top;
             const SnapBottom = containerRect.bottom - draggedRect.height;
 
-            const cellSizeX = containerRect.width / 5;
-            const cellSizeY = containerRect.height / 5;
+            const cellSizeX = gridSize.width;
+            const cellSizeY = gridSize.height;
             
+            setScale({width : cellSizeX, height: cellSizeY});
+
             if (right > containerRect.right && top < containerRect.top) {
                 setPosition({x: SnapRight, y: SnapTop});
-                setScale({width: containerRect.width, height: containerRect.height});
                 setSnap(!snapped);
             }
             else if (left < containerRect.left && top < containerRect.top) {
                 setPosition({x: SnapLeft, y: SnapTop});
-                setScale({width: containerRect.width, height: containerRect.height});
                 setSnap(!snapped);
             }
             else if (right > containerRect.right && bottom > containerRect.bottom) {
                 setPosition({x: SnapRight, y: SnapBottom});
-                setScale({width: containerRect.width, height: containerRect.height});
                 setSnap(!snapped);
             }
             else if (left < containerRect.left && bottom > containerRect.bottom) {
                 setPosition({x: SnapLeft, y: SnapBottom});
-                setScale({width: containerRect.width, height: containerRect.height});
                 setSnap(!snapped);
             }
             else {

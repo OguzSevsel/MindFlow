@@ -1,9 +1,10 @@
 import React from 'react'
 
-function NoteContainer({props}) {
+function NoteContainer() {
+  
   return (
     <div>
-      
+
     </div>
   )
 }

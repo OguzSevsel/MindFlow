@@ -1,21 +1,38 @@
-import React, { useRef } from 'react';
-import "../components/Index/styles.css";
-import Note from '../components/Index/Canvas/Notes/Note';
+import React, { useState } from "react";
+import Button from '../components/Index/SimpleComponents/Button';
+import { Add } from '@mui/icons-material';
+import GridLayoutComponent from "./GridLayoutComponent";
+import '../components/Index/styles.css';
 
 function Home() {
+  const [layout, setLayout] = useState([
+    
+  ]);
 
-  const containerRef = useRef(null);
+  const addNewItem = () => {
+    const newItem = {
+      i: `${layout.length + 1}`, // Ensure a unique ID
+      x: 0,
+      y: layout.length * 2,  // Position it below existing items
+      w: 1,
+      h: 1,
+    };
+
+    setLayout(prevLayout => [...prevLayout, newItem]); // Add new item to layout
+  };
 
   return (
-    <div ref={containerRef} className='BackGround'>
+    <div className='BackGround'>
+      <Button
+        className={`CircularButtons`}
+        onClick={addNewItem}
+        Icon={Add}
+        isIcon={true}
+        color={"white"}
+        fontSize={40}
+      />
 
-      <Note containerRef={containerRef}/>
-      <Note containerRef={containerRef}/>
-      <Note containerRef={containerRef}/>
-      <Note containerRef={containerRef}/>
-      <Note containerRef={containerRef}/>
-
-
+      <GridLayoutComponent layout={layout} setLayout={setLayout} />
     </div>
   );
 }
